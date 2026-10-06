@@ -34,13 +34,13 @@ Este projeto está diretamente alinhado à **ODS 2 – Fome Zero e Agricultura S
 
 Ao reduzir o atrito para doar (basta mandar uma mensagem no chat) e ao encontrar automaticamente a ONG mais próxima, o MESAFARTAI transforma desperdício em refeição.
 
-## 👥 Integrantes do Grupo
+## 👥 Integrantes do Grupo – NPC
 
-| Nome Completo | RA |
-|---|---|
-| NOME_INTEGRANTE_1 | RA_1 |
-| NOME_INTEGRANTE_2 | RA_2 |
-| NOME_INTEGRANTE_3 | RA_3 |
+| Nome Completo | RA | Curso |
+|---|---|---|
+| Pedro Vitor da Silva Oliveira | 130785 | Ciência da Computação |
+| Nicollas Hardt Urnau | 117763 | Ciência da Computação |
+| Caio Gabriel Souza dos Santos | 118316 | Ciência da Computação |
 
 ## 🗂️ Estrutura do Repositório
 
@@ -76,7 +76,7 @@ PROJETO-MESAFARTAI/
 
 ```bash
 # 1. Clonar o repositório
-git clone https://github.com/<usuario>/PROJETO-MESAFARTAI.git
+git clone https://github.com/Th3L0ck1/PROJETO-MESAFARTAI.git
 cd PROJETO-MESAFARTAI
 
 # 2. (Opcional) Criar ambiente virtual

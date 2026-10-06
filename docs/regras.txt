@@ -67,11 +67,17 @@ CHECKLIST DA ETAPA 1
       disciplina, com todos os integrantes presentes.
 
 -------------------------------------------------------------------------------
- 3. PAPÉIS DO GRUPO
+ 3. GRUPO NPC - INTEGRANTES E PAPÉIS
 -------------------------------------------------------------------------------
-  - Líder / Gestão do repositório ....... NOME_INTEGRANTE_1
-  - Banco de Dados e Back-End ........... NOME_INTEGRANTE_2
-  - NLU / Machine Learning .............. NOME_INTEGRANTE_3
+  Integrantes (todos do curso de Ciência da Computação):
+    - Pedro Vitor da Silva Oliveira ...... RA 130785
+    - Nicollas Hardt Urnau ............... RA 117763
+    - Caio Gabriel Souza dos Santos ...... RA 118316
+
+  Papéis:
+  - Líder / Gestão do repositório ....... Nicollas Hardt Urnau
+  - Banco de Dados e Back-End ........... Pedro Vitor da Silva Oliveira
+  - NLU / Machine Learning .............. Caio Gabriel Souza dos Santos
   - Documentação e Identidade Visual .... (todos)
 
 -------------------------------------------------------------------------------
