@@ -1,97 +1,84 @@
 <p align="center">
-  <img src="assets/logo_mesafartai.png" alt="Logo MESAFARTAI" width="220">
+  <img src="assets/logo_mesafartai.png" alt="Logo MESAFARTAI" width="200">
 </p>
 
 # MESAFARTAI - Logística e Inteligência Assistiva no Combate à Fome
 
-> *"A tecnologia só alcança seu propósito mais elevado quando é utilizada para resolver dores humanas reais e salvar vidas."*
+Projeto da disciplina de **Machine Learning & Chatbots** (turma de terça), desenvolvido pelo grupo **NPC**.
 
-**Disciplina:** Machine Learning & Chatbots
-**Turma:** Terça-feira
+## A ideia
 
----
+Muita comida boa vai pro lixo todo dia. Supermercado, restaurante, padaria e feirante acabam descartando alimento que ainda dá pra comer, porque está perto de vencer, porque a fruta ficou feia ou porque sobrou. Enquanto isso, ONGs e abrigos da região passam aperto pra conseguir doação.
 
-## 📌 Sobre o Projeto
+O problema quase nunca é falta de comida. É que doar dá trabalho. O dono do restaurante não vai parar o expediente pra preencher formulário por causa de 15 marmitas que sobraram, e a ONG do bairro nem fica sabendo que aquilo existia.
 
-Todos os dias, toneladas de alimentos próprios para consumo são descartadas por supermercados, restaurantes, feirantes e produtores por estarem próximos da validade, terem pequenos defeitos estéticos ou por excesso de estoque. Ao mesmo tempo, ONGs, abrigos e cozinhas comunitárias enfrentam escassez de suprimentos.
+A nossa proposta é um chatbot onde o doador manda uma mensagem do jeito que ele falaria normalmente, tipo:
 
-O gargalo não é a falta de comida, e sim a **falta de logística ágil e comunicação eficiente**.
+> "Tenho uns 30kg de verdura que vence amanhã, alguém consegue buscar até as 18h?"
 
-O **MESAFARTAI** é uma aplicação conversacional em Python que:
+E o sistema faz o resto:
 
-1. **Entende mensagens informais** de doadores e ONGs via chat (NLU com TF-IDF + classificador Scikit-Learn);
-2. **Protege a conversa** com uma trava de confiança (*threshold* < 0.60 → resposta de *fallback*);
-3. **Extrai automaticamente** alimentos, quantidades (kg, caixas, unidades) e validades (hoje, amanhã, 18h) via **Regex**;
-4. **Realiza o matchmaking logístico** com **KNN**, direcionando a doação para a ONG mais próxima;
-5. **Persiste tudo em SQLite3** (usuários, doações e matches) e exibe uma interface/dashboard em **Streamlit**.
+- entende o que a pessoa quer (doar, pedir alimento, consultar uma coleta ou algo fora do assunto) usando um classificador de intenções com TF-IDF + Scikit-Learn;
+- se não tiver certeza do que entendeu (confiança abaixo de 0.60), ele não chuta: pede pra pessoa explicar de novo;
+- puxa da frase o alimento, a quantidade e a validade usando Regex;
+- salva tudo num banco SQLite;
+- usa KNN pra achar a ONG mais perto do doador e gerar a coleta.
 
-## 🌍 Alinhamento com a ODS 2 da ONU
+A interface vai ser feita em Streamlit, com um modo "Sou Doador" e outro "Sou ONG".
 
-Este projeto está diretamente alinhado à **ODS 2 – Fome Zero e Agricultura Sustentável**, da Agenda 2030 da ONU, em especial:
+## Por que isso importa (ODS 2)
 
-- **Meta 2.1:** acabar com a fome e garantir o acesso de todas as pessoas, em particular os pobres e pessoas em situações vulneráveis, a alimentos seguros, nutritivos e suficientes durante todo o ano;
-- **Contribuição indireta à Meta 12.3 (ODS 12):** reduzir pela metade o desperdício de alimentos no varejo e no consumidor.
+O projeto conversa direto com a **ODS 2 da ONU – Fome Zero e Agricultura Sustentável**, principalmente com a meta 2.1, que fala em garantir que pessoas em situação de vulnerabilidade tenham acesso a alimento seguro e suficiente o ano todo. De quebra, também ajuda na meta 12.3 (ODS 12), que é reduzir o desperdício de comida.
 
-Ao reduzir o atrito para doar (basta mandar uma mensagem no chat) e ao encontrar automaticamente a ONG mais próxima, o MESAFARTAI transforma desperdício em refeição.
+A gente gostou da ideia justamente por ser um problema real e próximo: dá pra imaginar o mercado da esquina e o abrigo do bairro usando isso.
 
-## 👥 Integrantes do Grupo – NPC
+## Integrantes
 
-| Nome Completo | RA | Curso |
+| Nome | RA | Curso |
 |---|---|---|
 | Pedro Vitor da Silva Oliveira | 130785 | Ciência da Computação |
 | Nicollas Hardt Urnau | 117763 | Ciência da Computação |
 | Caio Gabriel Souza dos Santos | 118316 | Ciência da Computação |
 
-## 🗂️ Estrutura do Repositório
+## Como o repositório está organizado
 
 ```
 PROJETO-MESAFARTAI/
-├── docs/                         # Documentação do projeto
-│   ├── regras.txt                # Requisitos da etapa 1, regras internas e papéis do grupo
-│   ├── escopo_projeto.md         # Problema, público-alvo, intenções e prompt do logo
+├── docs/
+│   ├── regras.txt                  # o que foi pedido na etapa 1, regras e papéis do grupo
+│   ├── escopo_projeto.md           # problema, público, intenções, dados e prompt do logo
 │   ├── arquitetura_mesafartai.png
 │   └── diag_fluxo_mesafartai.png
 ├── assets/
-│   └── logo_mesafartai.png       # Logotipo gerado via IA
+│   └── logo_mesafartai.png         # logo gerado com IA
 ├── src/
-│   ├── database.py               # Criação das tabelas e seeds do SQLite  (06/10 ✅)
-│   ├── nlu.py                    # Pipeline TF-IDF + Classificador + Threshold (13/10)
-│   ├── regex_entities.py         # Extração de entidades via Regex (27/10)
-│   ├── matchmaking.py            # Algoritmo KNN de proximidade (27/10)
-│   └── app.py                    # Interface Streamlit e Dashboard (03/11)
-├── data/
-│   └── dataset_intencoes.csv     # Dataset de treino do classificador (13/10)
+│   └── database.py                 # cria o banco SQLite e insere os dados de teste
+├── data/                           # aqui vai entrar o dataset de intenções
 ├── .gitignore
 ├── README.md
 └── requirements.txt
 ```
 
-## 🏗️ Arquitetura e Fluxo de Dados
+Os outros arquivos do `src/` (`nlu.py`, `regex_entities.py`, `matchmaking.py` e `app.py`) vão sendo criados nas próximas aulas.
 
-| Arquitetura em camadas | Fluxo de dados simplificado |
+A arquitetura e o fluxo de dados que estamos seguindo:
+
+| Arquitetura | Fluxo de dados |
 |---|---|
 | ![Arquitetura](docs/arquitetura_mesafartai.png) | ![Fluxo](docs/diag_fluxo_mesafartai.png) |
 
-## ▶️ Como Executar
+## Rodando o projeto
+
+Por enquanto a única parte executável é o banco de dados.
 
 ```bash
-# 1. Clonar o repositório
 git clone https://github.com/Th3L0ck1/PROJETO-MESAFARTAI.git
 cd PROJETO-MESAFARTAI
-
-# 2. (Opcional) Criar ambiente virtual
-python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # Linux/Mac
-
-# 3. Instalar dependências
 pip install -r requirements.txt
-
-# 4. Inicializar o banco de dados com a carga de teste
 python src/database.py
 ```
 
-Saída esperada:
+Se der tudo certo, aparece algo assim:
 
 ```
 ✅ Dados iniciais de teste inseridos com sucesso!
@@ -101,13 +88,13 @@ Saída esperada:
    - matches: 0 registro(s)
 ```
 
-## 📅 Cronograma
+O banco já vem com 2 ONGs, 2 doadores e 2 doações de teste. Pode rodar o script mais de uma vez que ele não duplica os dados.
 
-| Data | Entrega | Status |
-|---|---|---|
-| 06/10 | Kickoff, documentação, arquitetura, BD SQLite e carga inicial | ✅ |
-| 13/10 | Pipeline NLU (Classificação de Intenções + Threshold/Fallback) | ⏳ |
-| 27/10 | Extração Regex + KNN de Matchmaking + Entrega final AC-3 | ⏳ |
-| 03/11 | Interface Web Conversacional no Streamlit | ⏳ |
-| 10/11 | Dashboard Logístico de Impacto Social + Testes de Estresse | ⏳ |
-| 17/11 | Demo Day (Pitching) + Entrega final AC-4 | ⏳ |
+## Andamento
+
+- [x] **06/10** – Kickoff, documentação, arquitetura, banco SQLite e carga inicial
+- [ ] **13/10** – Classificador de intenções + trava de confiança (fallback)
+- [ ] **27/10** – Extração com Regex + matchmaking com KNN (entrega da AC-3)
+- [ ] **03/11** – Chat no Streamlit ligado ao back-end
+- [ ] **10/11** – Dashboard de impacto + testes
+- [ ] **17/11** – Demo Day (entrega da AC-4)
