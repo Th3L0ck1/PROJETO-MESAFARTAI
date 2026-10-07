@@ -1,94 +1,23 @@
-===============================================================================
- MESAFARTAI - Logística e Inteligência Assistiva no Combate à Fome
- Documento: regras.txt
- Disciplina: Machine Learning & Chatbots  |  Turma: Terça-feira
-===============================================================================
+MESAFARTAI - Etapa 1 (06/10)
 
--------------------------------------------------------------------------------
- 1. O QUE ESTÁ SENDO PEDIDO NA ETAPA 1 (AULA 06/10 - 0,25 PONTO NA AC-3)
--------------------------------------------------------------------------------
-Objetivo da etapa: estabelecer as fundações de engenharia, banco de dados e
-documentação do produto.
+O que foi pedido na etapa 1:
 
-PASSO 1 - Organização do Grupo e Repositório
-  - Formar grupo de 3 a 5 alunos.
-  - Criar um repositório PÚBLICO no GitHub com o nome exato: PROJETO-MESAFARTAI
-  - Adicionar todos os integrantes e o professor como colaboradores.
+1. Formar um grupo de 3 a 5 alunos e criar um repositório público no GitHub
+   chamado PROJETO-MESAFARTAI, adicionando os integrantes e o professor.
 
-PASSO 2 - Arquivo README.md e Pasta /docs
-  - README.md na raiz contendo:
-      * Título oficial: "MESAFARTAI - Logística e Inteligência Assistiva no
-        Combate à Fome";
-      * Descrição resumida da solução e alinhamento com a ODS 2 da ONU;
-      * Nome completo e RA de cada integrante.
-  - Pasta /docs com:
-      * docs/regras.txt (este arquivo) descrevendo o que é pedido na etapa 1;
-      * docs/escopo_projeto.md com o problema de negócio, o público-alvo
-        (Doadores x ONGs), o escopo das intenções e os dados coletados no chat;
-      * docs/arquitetura_mesafartai.png (modelo de arquitetura em camadas);
-      * docs/diag_fluxo_mesafartai.png (diagrama de fluxo de dados).
+2. Criar o README.md com o título do projeto, uma descrição da solução,
+   o alinhamento com a ODS 2 e o nome e RA dos integrantes.
+   Criar a pasta docs com o regras.txt e o escopo_projeto.md.
 
-PASSO 3 - Identidade Visual e Logotipo via IA
-  - Formular um prompt criativo e gerar o logotipo com uma IA generativa.
-  - O logo deve unir alimento/acolhimento + tecnologia/IA assistiva.
-  - Salvar em assets/logo_mesafartai.png.
-  - Registrar o prompt exato utilizado em docs/escopo_projeto.md.
+3. Criar um logo com IA que junte alimento/acolhimento com tecnologia,
+   salvar em assets/logo_mesafartai.png e colocar o prompt no escopo_projeto.md.
 
-PASSO 4 - Script de Banco de Dados (src/database.py)
-  - Script Python que inicializa o banco SQLite3 "mesafartai.db" com as
-    tabelas: usuarios, doacoes e matches.
-  - Popular o banco com dados de teste (seeds): 2 ONGs e 2 doadores.
-  - O script deve executar sem erros e gerar o arquivo mesafartai.db.
+4. Criar o src/database.py que cria o banco SQLite (mesafartai.db) com as
+   tabelas usuarios, doacoes e matches, e insere dados de teste.
 
-ENVIO
-  - E-mail ao professor até o final do horário de aula:
-      Assunto: [MESAFARTAI] - Nome do Grupo - Turma Terça
-      Corpo:   Integrantes (Nome + RGM + Curso) + link do repositório GitHub.
-  - Só há validade e nota se a atividade for realizada em sala de aula.
+5. Enviar e-mail para o professor com os integrantes e o link do repositório.
 
-CHECKLIST DA ETAPA 1
-  [x] Repositório PROJETO-MESAFARTAI criado e público no GitHub.
-  [x] README.md preenchido com descrição, ODS 2 e membros.
-  [x] Pasta /docs com regras.txt e escopo_projeto.md (com prompt da IA).
-  [x] Pasta /src com database.py executado sem erros, gerando mesafartai.db.
-  [ ] E-mail enviado ao professor.
-
--------------------------------------------------------------------------------
- 2. REGRAS INTERNAS DO GRUPO
--------------------------------------------------------------------------------
-  R1. Toda alteração de código vai para o GitHub via commit com mensagem
-      descritiva (ex.: "feat: cria tabela de matches").
-  R2. Ninguém sobe arquivos de ambiente (.venv, __pycache__) - ver .gitignore.
-  R3. Bibliotecas novas devem ser adicionadas ao requirements.txt.
-  R4. Código, variáveis e comentários em português, seguindo a PEP 8.
-  R5. Cada entrega semanal é revisada por pelo menos um outro integrante
-      antes do envio ao professor.
-  R6. Atividades avaliativas são realizadas em sala de aula, no horário da
-      disciplina, com todos os integrantes presentes.
-
--------------------------------------------------------------------------------
- 3. GRUPO NPC - INTEGRANTES E PAPÉIS
--------------------------------------------------------------------------------
-  Integrantes (todos do curso de Ciência da Computação):
-    - Pedro Vitor da Silva Oliveira ...... RA 130785
-    - Nicollas Hardt Urnau ............... RA 117763
-    - Caio Gabriel Souza dos Santos ...... RA 118316
-
-  Papéis:
-  - Líder / Gestão do repositório ....... Nicollas Hardt Urnau
-  - Banco de Dados e Back-End ........... Pedro Vitor da Silva Oliveira
-  - NLU / Machine Learning .............. Caio Gabriel Souza dos Santos
-  - Documentação e Identidade Visual .... (todos)
-
--------------------------------------------------------------------------------
- 4. CRONOGRAMA
--------------------------------------------------------------------------------
-  FASE 1 - AC-3 (1,0 ponto)
-    06/10 (0,25) Kickoff, documentação, arquitetura, BD SQLite e carga inicial.
-    13/10 (0,25) Pipeline NLU (Classificação de Intenções + Threshold/Fallback).
-    27/10 (0,50) Extração Regex + KNN de Matchmaking + ENTREGA FINAL AC-3.
-  FASE 2 - AC-4 (1,0 ponto)
-    03/11 (0,25) Interface Web Conversacional (Streamlit) + Back-End.
-    10/11 (0,25) Dashboard Logístico de Impacto Social + Testes de Estresse.
-    17/11 (0,50) Demo Day (Pitching) + ENTREGA FINAL AC-4.
-===============================================================================
+Grupo NPC:
+- Pedro Vitor da Silva Oliveira - RA 130785
+- Nicollas Hardt Urnau - RA 117763
+- Caio Gabriel Souza dos Santos - RA 118316

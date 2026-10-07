@@ -1,41 +1,8 @@
-"""
-MESAFARTAI - Logística e Inteligência Assistiva no Combate à Fome
-Módulo: database.py
-
-Responsável por criar o banco de dados relacional SQLite3 (mesafartai.db)
-com as tabelas fundamentais do sistema e popular com dados de teste (seeds).
-
-Tabelas:
-    - usuarios : Doadores e ONGs cadastrados (com coordenadas para o KNN)
-    - doacoes  : Ofertas de alimentos registradas pelos doadores
-    - matches  : Resultado do matchmaking logístico (doação -> ONG)
-
-Execução (a partir da raiz do repositório):
-    python src/database.py
-"""
-
-import os
 import sqlite3
-import sys
-
-# Garante que os emojis dos prints funcionem em terminais Windows (cp1252)
-if hasattr(sys.stdout, "reconfigure"):
-    sys.stdout.reconfigure(encoding="utf-8")
-
-# O banco é criado na raiz do repositório, independente de onde o script é chamado
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DB_PATH = os.path.join(BASE_DIR, "mesafartai.db")
-
-
-def conectar():
-    """Abre uma conexão com o banco e habilita a checagem de chaves estrangeiras."""
-    conn = sqlite3.connect(DB_PATH)
-    conn.execute("PRAGMA foreign_keys = ON")
-    return conn
 
 
 def inicializar_banco():
-    conn = conectar()
+    conn = sqlite3.connect('mesafartai.db')
     cursor = conn.cursor()
 
     # 1. Tabela de Usuários (Doadores e ONGs)
@@ -87,27 +54,12 @@ def inicializar_banco():
         # Cadastra Doadores de teste
         cursor.execute("INSERT INTO usuarios (nome, tipo, cep, latitude, longitude, telefone) VALUES ('Supermercado Silva', 'DOADOR', '06701-000', -23.615, -46.785, '11999990003')")
         cursor.execute("INSERT INTO usuarios (nome, tipo, cep, latitude, longitude, telefone) VALUES ('Restaurante Sabor', 'DOADOR', '06703-000', -23.618, -46.789, '11999990004')")
-
-        # Cadastra Doações de teste (para já termos dados no futuro matchmaking KNN)
-        cursor.execute("INSERT INTO doacoes (doador_id, descricao_alimento, quantidade_kg, data_validade) VALUES (3, 'Frutas e verduras', 30.0, '2026-10-07')")
-        cursor.execute("INSERT INTO doacoes (doador_id, descricao_alimento, quantidade_kg, data_validade) VALUES (4, 'Marmitas prontas', 12.5, '2026-10-06')")
-        print("✅ Dados iniciais de teste inseridos com sucesso!")
+        print("Dados iniciais de teste inseridos com sucesso!")
 
     conn.commit()
     conn.close()
-    print(f"✅ Banco de dados 'mesafartai.db' inicializado com sucesso! ({DB_PATH})")
-
-
-def listar_tabelas():
-    """Função auxiliar para conferir rapidamente o conteúdo do banco."""
-    conn = conectar()
-    cursor = conn.cursor()
-    for tabela in ("usuarios", "doacoes", "matches"):
-        cursor.execute(f"SELECT COUNT(*) FROM {tabela}")
-        print(f"   - {tabela}: {cursor.fetchone()[0]} registro(s)")
-    conn.close()
+    print("Banco de dados 'mesafartai.db' inicializado com sucesso!")
 
 
 if __name__ == "__main__":
     inicializar_banco()
-    listar_tabelas()

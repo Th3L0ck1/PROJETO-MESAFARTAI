@@ -1,24 +1,2 @@
-# Python
 __pycache__/
-*.py[cod]
-*.egg-info/
-
-# Ambientes virtuais
 .venv/
-venv/
-env/
-
-# IDEs / SO
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
-# Streamlit
-.streamlit/secrets.toml
-
-# Banco de dados
-# Por padrão os bancos locais são ignorados, mas o mesafartai.db da Etapa 1
-# é versionado como evidência da execução do src/database.py.
-*.db
-!mesafartai.db
