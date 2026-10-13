@@ -1,11 +1,14 @@
+import os
 import sqlite3
 
+# Define o caminho do banco de dados para ser salvo dentro do diretório src/
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mesafartai.db')
 
 def inicializar_banco():
-    conn = sqlite3.connect('mesafartai.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    # 1. Tabela de Usuários (Doadores e ONGs)
+    # 1. Tabela de Usuários
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,7 +21,7 @@ def inicializar_banco():
         )
     ''')
 
-    # 2. Tabela de Doações de Alimentos
+    # 2. Tabela de Doações
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS doacoes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -31,7 +34,7 @@ def inicializar_banco():
         )
     ''')
 
-    # 3. Tabela de Matches Logísticos
+    # 3. Tabela de Matches
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS matches (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -44,22 +47,16 @@ def inicializar_banco():
         )
     ''')
 
-    # Inserção de Carga Inicial (Seeds de Teste)
+    # Seeds Iniciais
     cursor.execute("SELECT COUNT(*) FROM usuarios")
     if cursor.fetchone()[0] == 0:
-        # Cadastra ONGs de teste
         cursor.execute("INSERT INTO usuarios (nome, tipo, cep, latitude, longitude, telefone) VALUES ('ONG Prato Quente', 'ONG', '06700-000', -23.612, -46.781, '11999990001')")
-        cursor.execute("INSERT INTO usuarios (nome, tipo, cep, latitude, longitude, telefone) VALUES ('Abrigo Esperanca', 'ONG', '06705-000', -23.625, -46.795, '11999990002')")
-
-        # Cadastra Doadores de teste
         cursor.execute("INSERT INTO usuarios (nome, tipo, cep, latitude, longitude, telefone) VALUES ('Supermercado Silva', 'DOADOR', '06701-000', -23.615, -46.785, '11999990003')")
-        cursor.execute("INSERT INTO usuarios (nome, tipo, cep, latitude, longitude, telefone) VALUES ('Restaurante Sabor', 'DOADOR', '06703-000', -23.618, -46.789, '11999990004')")
-        print("Dados iniciais de teste inseridos com sucesso!")
+        print("Dados iniciais de teste (seeds) inseridos com sucesso!")
 
     conn.commit()
     conn.close()
-    print("Banco de dados 'mesafartai.db' inicializado com sucesso!")
-
+    print("Banco 'mesafartai.db' criado e atualizado!")
 
 if __name__ == "__main__":
     inicializar_banco()
