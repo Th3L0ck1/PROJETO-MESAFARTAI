@@ -17,6 +17,44 @@ O que foi pedido na etapa 1:
 
 5. Enviar e-mail para o professor com os integrantes e o link do repositório.
 
+--------------------------------------------------
+
+MESAFARTAI - Etapa 2 (AC-3): Motor NLU e Trava de Threshold
+
+O que foi pedido na etapa 2:
+
+1. Clonar o Repositório: Terminal ou Prompt de Comando
+   - No GitHub, copiar a URL HTTPS do repositório.
+   - Executar no terminal:
+     git clone https://github.com/Th3L0ck1/PROJETO-MESAFARTAI.git
+     cd PROJETO-MESAFARTAI
+
+2. Abrir no VS Code e Instalar Bibliotecas: Ambiente Local
+   - Abrir a pasta do projeto no VS Code (code . ou Arquivo -> Abrir Pasta).
+   - Atualizar/criar o requirements.txt na raiz com:
+     streamlit==1.38.0
+     scikit-learn==1.5.1
+     pandas==2.2.2
+     numpy==1.26.4
+   - Executar no terminal a instalação dos pacotes:
+     pip install -r requirements.txt
+
+3. Criar o código do Motor NLU: Arquivo src/nlu.py
+   - Implementar o pipeline NLU com TF-IDF (ngram_range=(1,2)), classificador Random Forest (n_estimators=80, random_state=42) e Trava de Segurança por Limiar de Confiança (Threshold = 0.60) / Fallback.
+
+4. Executar e Testar: Validação Local
+   - Executar o script no terminal:
+     python src/nlu.py
+   - Validar a classificação de intenções e o funcionamento do fallback para mensagens incertas ou fora de escopo.
+
+5. Realizar Commit e Push para o GitHub
+   - Sincronizar as alterações com o repositório remoto:
+     git add .
+     git commit -m "feat(nlu): implementa motor TF-IDF + Random Forest com trava de threshold"
+     git push origin main
+
+--------------------------------------------------
+
 Grupo NPC:
 - Pedro Vitor da Silva Oliveira - RA 130785
 - Nicollas Hardt Urnau - RA 117763
