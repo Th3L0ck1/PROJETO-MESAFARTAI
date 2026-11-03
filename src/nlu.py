@@ -97,6 +97,11 @@ class MotorNLU:
             "resposta": f"Intenção '{intencao_predita}' identificada com {max_confianca*100:.1f}% de confiança."
         }
 
+    def predizer_intencao(self, texto_usuario):
+        """Retorna a tupla (intencao, confianca) para integração com o Streamlit."""
+        resultado = self.processar_mensagem(texto_usuario)
+        return resultado["intencao"], resultado["confianca"]
+
 # --- TESTE DO MÓDULO EM TEMPO DE EXECUÇÃO ---
 if __name__ == "__main__":
     nlu = MotorNLU(limiar_threshold=0.60)

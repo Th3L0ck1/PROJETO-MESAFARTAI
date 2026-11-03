@@ -279,6 +279,27 @@ CHECKLIST DA ETAPA 3 (AC-3)
 
 --------------------------------------------------
 
+========================================================================
+MESAFARTAI - FASE 2 / AC-4 PARTE 1 - STREAMLIT E DASHBOARD
+========================================================================
+PARTE 1 - CONHECENDO O STREAMLIT:
+1. Criar e executar o Painel de Doações (app_streamlit.py) com limite máximo
+   de 25 kg por doação (max_value=25).
+2. Testar a aplicação registrando doações até atingir a meta de 200 kg.
+3. Capturar print da tela ao atingir 200 kg e salvar em docs/teste_streamlit.png.
+
+PARTE 2 - AC-4 PARTE 1 (MÓDULO PRINCIPAL INTERATIVO - src/app.py):
+1. Unir os módulos de Back-End (src/nlu.py, src/entities.py e src/matchmaking.py)
+   em uma aplicação web interativa com Streamlit (src/app.py).
+2. Implementar a aba Chatbot de Doações ("💬 Chatbot de Doações") integrada ao
+   motor NLU, extração de entidades via Regex e matchmaking KNN.
+3. Implementar a aba Dashboard de Impacto Social ("📊 Dashboard de Impacto Social")
+   alimentada pelo SQLite (mesafartai.db) com KPIs alinhados à ODS 2.
+4. Capturar print da tela principal funcionando em docs/etapa_ac4_parte1.png.
+5. Realizar commit e push de todos os arquivos para o repositório no GitHub.
+
+--------------------------------------------------
+
 Grupo NPC:
 - Pedro Vitor da Silva Oliveira - RA 130785
 - Nicollas Hardt Urnau - RA 117763
