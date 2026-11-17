@@ -300,6 +300,32 @@ PARTE 2 - AC-4 PARTE 1 (MÓDULO PRINCIPAL INTERATIVO - src/app.py):
 
 --------------------------------------------------
 
+========================================================================
+MESAFARTAI - VERSÃO 2 (AC-4 PARTE 2 - VALOR 0,5 PONTO)
+========================================================================
+Arquitetura final da solução:
+- requirements.txt
+- src/ (app.py, auth.py, chatbot.py, database.py, entities.py, geocoding.py, matchmaking.py, nlu.py)
+- data/ (alimentos.csv, dataset_intencoes.csv, dataset_teste.csv, mesafartai.db)
+- scripts/ (gerar_hash_senha.py, gerar_dataset.py)
+- .streamlit/ (secrets.toml.example, secrets.toml)
+
+Etapas executadas:
+1. Sincronização do repositório via git pull origin main.
+2. Atualização do requirements.txt e criação dos diretórios scripts/, .streamlit/ e data/.
+3. Implementação da autenticação PBKDF2-HMAC-SHA256 (src/auth.py e scripts/gerar_hash_senha.py)
+   e configuração do .streamlit/secrets.toml com o e-mail de contato do Nominatim.
+4. Atualização completa dos módulos em src/ (geocoding.py, chatbot.py, database.py, entities.py,
+   matchmaking.py, nlu.py e app.py) e datasets em data/ (alimentos.csv, dataset_intencoes.csv,
+   dataset_teste.csv).
+5. Testes e criação de dados em execução real (streamlit run src/app.py):
+   - Acesso à área administrativa validado com senha.
+   - Cadastro de 4 novas ONGs para recebimento de alimentos.
+   - Realização de 5 novas interações completas com o chatbot registrando doações e matches.
+6. Atualização da versão final no GitHub com o commit "MESAFARTAI: versão 2".
+
+--------------------------------------------------
+
 Grupo NPC:
 - Pedro Vitor da Silva Oliveira - RA 130785
 - Nicollas Hardt Urnau - RA 117763
